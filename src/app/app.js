@@ -1,48 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import Rev from '../reveal/reveal'
+import Reveal from 'reveal.js'
+import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js'
+import 'reveal.js/dist/reveal.css'
+//import 'reveal.js/dist/theme/black.css'
 
 const App = (props) => {
-    const handleClick = async () => {
-        let response = await fetch('/graphql', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({query: "{ hello }"})
-        })
-        let data = await response.json()
-        console.log(data)
-    }
-
-    const handleClick2 = async () => {
-        var dice = 3;
-        var sides = 6;
-        var query = `
-            query RollDice($dice: Int!, $sides: Int) {
-                rollDice(numDice: $dice, numSides: $sides)
-            }
-        `;
-
-        let response = await fetch('/graphql', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                query,
-                variables: { dice, sides },
-            })
-        })
-        let data = await response.json()
-        console.log(data)
-    }
-
-    return <div className='app'>
-        hello world
-        <button onClick={handleClick}>Click me!</button>
-        <button onClick={handleClick2}>Now click me to roll dice!</button>
-    </div>
+    useEffect(() => {
+        let deck = new Reveal({
+            plugins: [ Markdown ]
+        }) 
+        deck.initialize()
+    }, [])
+    return <Rev />
 }
 
 export default App;
