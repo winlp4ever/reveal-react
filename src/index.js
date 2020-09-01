@@ -6,6 +6,9 @@ import $ from 'jquery'
 import { initializeIcons } from '@uifabric/icons'
 initializeIcons()
 
+import 'reveal.js/dist/reveal.css'
+import './_my-reveal.scss'
+
 function renderWeb() {
     ReactDOM.render(<App />, document.getElementById('main'))
 }
