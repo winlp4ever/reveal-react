@@ -80,6 +80,7 @@
     "remark-math": "^2.0.1",
     "remarkable": "^2.0.1",
     "request": "^2.88.2",
+    "reveal.js": "^4.0.2",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
